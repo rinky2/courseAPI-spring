@@ -1,5 +1,8 @@
-package io.javaspringBoot.courseAPIdata.Courses;
+/*package io.javaspringBoot.courseAPIdata.Service.impl;
 
+import io.javaspringBoot.courseAPIdata.Model.Course;
+import io.javaspringBoot.courseAPIdata.Repository.CourseRepository;
+import io.javaspringBoot.courseAPIdata.Service.CourseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,19 +11,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CourseService {
+public abstract class CourseServiceImpl implements CourseDAO {
 
     @Autowired
     public CourseRepository courseRepository;
 
-    public List<Course> getAllCourses(String topicId) {
+
+    public List<Course> getAllCourses(int topicId) {
 
         List<Course> courses = new ArrayList();
         courseRepository.findByTopicId(topicId).forEach(courses::add);
         return courses;
     }
 
-    public Optional<Course> getCourses(String id) {
+    public Optional<Course> getCourses(int id) {
 
         //return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
 
@@ -43,8 +47,9 @@ public class CourseService {
 
 
 
-    public void deleteCourses(String id) {
+    public void deleteCourses(int id) {
         //topics.removeIf(t-> t.getId().equals(id));
         courseRepository.deleteById(id);
     }
 }
+*/
