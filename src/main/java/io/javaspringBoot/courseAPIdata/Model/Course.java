@@ -19,7 +19,7 @@ public class Course
     private String name;
     private String description;
     @ManyToOne
-    private Topic topic;
+    private TopicDAO topic;
 
 
     public Course(int id, String name, String description, int topicId) {
@@ -28,7 +28,7 @@ public class Course
         this.name = name;
         this.description = description;
 
-        this.topic = new Topic();
+        this.topic = new TopicDAO();
     }
 
 }

@@ -2,7 +2,7 @@
 
 import io.javaspringBoot.courseAPIdata.Model.Course;
 import io.javaspringBoot.courseAPIdata.Service.impl.CourseServiceImpl;
-import io.javaspringBoot.courseAPIdata.Model.Topic;
+import io.javaspringBoot.courseAPIdata.Model.TopicDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,14 +28,14 @@ public class CourseController {
     @PostMapping("/add/topics/{topicId}/courses")
     public void addCourses(@RequestBody Course course,@PathVariable int topicId)//pick this instance from request payload
     {
-        course.setTopic(new Topic());
+        course.setTopic(new TopicDAO());
         courseServiceImpl.addCourses(course);
     }
 
     @PutMapping("/update/topics/{topicId}/courses/{id}")
     public void updateCourses(@RequestBody Course course, @PathVariable int topicId, @PathVariable String id)//pick this instance from request payload
     {
-        course.setTopic(new Topic());
+        course.setTopic(new TopicDAO());
 
         courseServiceImpl.updateCourses(course);
     }

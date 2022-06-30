@@ -17,7 +17,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Topic extends TopicDTO {
+public class TopicDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
