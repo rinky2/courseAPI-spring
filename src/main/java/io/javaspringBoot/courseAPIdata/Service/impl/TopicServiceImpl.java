@@ -33,12 +33,13 @@ public class TopicServiceImpl implements TopicService {
         List<TopicDTO> topics = new ArrayList();
         ResponseTopic<List<TopicDTO>> response = new ResponseTopic<>();
         List<TopicDAO> topicsData = (List<TopicDAO>) topicRepository.findAll();
+        System.out.println(topicsData);
         //response = null;
          try{
              if(topicsData.isEmpty()){
                  response.setBody(topics);
                  response.setStatus(200);
-                 response.setMessage("No topics is DB!");
+                 response.setMessage("No topics in DB!");
              }else {
                  for (int i = 0; i < topicsData.size(); i++) {
                      TopicDAO topicdb = topicsData.get(i);
