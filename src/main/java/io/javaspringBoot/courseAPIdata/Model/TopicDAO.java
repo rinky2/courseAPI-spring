@@ -24,4 +24,11 @@ public class TopicDAO {
     private String name;
     private String description;
 
+    public TopicDAO(TopicDTO dto) {
+        //Converting from Entity to DTO
+        this.id = dto.getId();
+        this.name = dto.getName();
+        this.description = dto.getDescription();
+    }
+
 }

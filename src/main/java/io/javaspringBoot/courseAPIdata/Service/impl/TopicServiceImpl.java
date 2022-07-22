@@ -34,7 +34,7 @@ public class TopicServiceImpl implements TopicService {
         ResponseTopic<List<TopicDTO>> response = new ResponseTopic<>();
         List<TopicDAO> topicsData = (List<TopicDAO>) topicRepository.findAll();
         System.out.println(topicsData);
-        //response = null;
+//        response = null;
          try{
              if(topicsData.isEmpty()){
                  response.setBody(topics);
@@ -80,26 +80,25 @@ public class TopicServiceImpl implements TopicService {
     }
 
     public ResponseTopic<TopicDTO> addTopic(TopicDTO topicDTO) {
-        if (topicDTO.getName() == "" || topicDTO.getName() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Topic Name cannot be Empty or Null!");
-        }
+//        if (topicDTO.getName() == "" || topicDTO.getName() == null) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Topic Name cannot be Empty or Null!");
+//        }
         ResponseTopic<TopicDTO> response = new ResponseTopic<>();
-        TopicDAO topicDAO = topicConverter.dtoToEntity(topicDTO);
+
+        TopicDAO topicDAO = new TopicDAO(topicDTO);
         List<TopicDAO> topicDb = (List<TopicDAO>) topicRepository.findAll();
         for (int i = 0; i < topicDb.size(); i++) {
             TopicDAO topic = topicDb.get(i);
-            if (topicDTO.getId()==(topic.getId())) {
+            if (topicDTO.getName().equals(topic.getName())) {
                 throw new ResponseStatusException(HttpStatus.FOUND, "Topic ID Already present!");
             }
         }
-        topicRepository.save(topicDAO);
+       topicRepository.save(topicDAO);
         response.setMessage("Topic Added Successfully!");
         response.setStatus(200);
         response.setBody(topicDTO);
 
         return response;
-
-
     }
 
     public ResponseTopic<TopicDTO> updatetopic(int id, TopicDTO topicDTO) {
@@ -143,9 +142,10 @@ public class TopicServiceImpl implements TopicService {
         ResponseTopic<TopicDTO> response = new ResponseTopic<>();
 
         Optional<TopicDAO> db = topicRepository.findById(id);
-        TopicDTO dto = new TopicDTO(db.get());
+
 
         if (db.isPresent()) {
+            TopicDTO dto = new TopicDTO(db.get());
             TopicDAO t = db.get();
             if (name!= null)
                 t.setName(name);

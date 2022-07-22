@@ -17,7 +17,7 @@ public @Data class TopicDTO {
     private String description;
 
     public TopicDTO(TopicDAO dao) {
-        //Converting from Entity to DTO
+
         this.id = dao.getId();
         this.name = dao.getName();
         this.description = dao.getDescription();

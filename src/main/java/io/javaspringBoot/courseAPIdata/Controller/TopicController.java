@@ -41,19 +41,19 @@ public class TopicController {
     @PostMapping ("/topics")
     public ResponseTopic<TopicDTO> addTopic(@RequestBody TopicDTO topicDTO) throws IOException//pick this instance from request payload
     {
-        final String Path = "C:/Users/rinky.pavagadhi/Desktop/";
-        String name = topicDTO.getName();
-        File fp = new File(Path + name);
-        fp.createNewFile();
-        FileWriter fwrite = new FileWriter(Path + name);
-        fwrite.write(topicDTO.getDescription());
-
-        fwrite.close();
+//        final String Path = "C:/Users/rinky.pavagadhi/Desktop/";
+//        String name = topicDTO.getName();
+//        File fp = new File(Path + name);
+//        fp.createNewFile();
+//        FileWriter fwrite = new FileWriter(Path + name);
+//        fwrite.write(topicDTO.getDescription());
+//
+//        fwrite.close();
         return topicServiceImpl.addTopic(topicDTO);
     }
 
     @PutMapping( "/topics/update/{id}")
-    public ResponseTopic<TopicDTO> addTopic(@RequestBody TopicDTO topicDTO, @PathVariable int id)//pick this instance from request payload
+    public ResponseTopic<TopicDTO> updateTopic(@RequestBody TopicDTO topicDTO, @PathVariable int id)//pick this instance from request payload
     {
         return topicServiceImpl.updatetopic(id, topicDTO);
     }
